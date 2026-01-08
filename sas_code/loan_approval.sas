@@ -200,7 +200,7 @@ PROC SGPLOT DATA=loan_data;
     TITLE "Income Distribution by Education Level";
 RUN;
 
-/* 📊 Bar Chart: Loan Intent Frequency Distribution
+/*  Bar Chart: Loan Intent Frequency Distribution
    Purpose: Shows the number of applications for each loan purpose.
    Insight: Highlights the most and least common reasons for taking out loans. */
 PROC SGPLOT DATA=loan_data;
@@ -208,7 +208,7 @@ PROC SGPLOT DATA=loan_data;
     TITLE "Loan Purpose Distribution";
 RUN;
 
-/* 📊 Clustered Bar Chart: Loan Intent by Approval Status
+/*  Clustered Bar Chart: Loan Intent by Approval Status
    Purpose: Compares the approval rates for each loan intent category.
    Insight: Helps understand if approval likelihood varies by loan purpose. */
 PROC SGPLOT DATA=loan_data;
@@ -216,7 +216,7 @@ PROC SGPLOT DATA=loan_data;
     TITLE "Loan Status by Loan Intent";
 RUN;
 
-/* 📊 Density Plot: Distribution of Credit Scores
+/*  Density Plot: Distribution of Credit Scores
    Purpose: Plots the smoothed density curve of credit scores to understand distribution shape.
    Insight: Highlights skewness, peaks, and spread in applicant credit scores. */
 PROC SGPLOT DATA=loan_data;
@@ -224,7 +224,7 @@ PROC SGPLOT DATA=loan_data;
     TITLE "Density Plot of Credit Score";
 RUN;
 
-/* 📊 Paneled Scatter Plot: Income vs Loan Amount by Loan Intent
+/*  Paneled Scatter Plot: Income vs Loan Amount by Loan Intent
    Purpose: Displays loan amount vs. income for each loan intent in separate panels.
    Insight: Helps reveal intent-specific borrowing behaviors across income levels. */
 PROC SGPANEL DATA=loan_data;
@@ -233,7 +233,7 @@ PROC SGPANEL DATA=loan_data;
     TITLE "Income vs Loan Amount by Loan Intent";
 RUN;
 
-/* 📊 Heatmap: Income vs Loan Amount Frequency
+/*  Heatmap: Income vs Loan Amount Frequency
    Purpose: Simulates density by coloring the frequency of unique income-loan pairs.
    Insight: Highlights common combinations and borrower patterns. */
 
@@ -247,7 +247,7 @@ quit;
 
 
 
-/* 📊 3D Bar Chart: Average Credit Score by Home Ownership Type
+/*  3D Bar Chart: Average Credit Score by Home Ownership Type
    Purpose: Visualizes average credit scores across home ownership categories,
    segmented by loan approval status using a 3D vertical bar chart.
    Insight: Highlights whether renters, owners, or mortgage-holders differ in creditworthiness across approval outcomes. */
@@ -538,7 +538,7 @@ run;
 ods excel close;
 
 
-/* 💡 Set threshold and flag predictions */
+/*  Set threshold and flag predictions */
 %let cut = 0.30;
 
 data predictions_flag;
@@ -700,7 +700,7 @@ quit;
 %let outdir = &path.;
 %let stamp  = %sysfunc(putn(%sysfunc(date()), yymmddn8.))_%sysfunc(putn(%sysfunc(time()), time5.));
 
-/* 📦 Safe export macro */
+/*  Safe export macro */
 %macro safe_export(data=, file=);
     %if %sysfunc(exist(&data)) %then %do;
         proc export data=&data
@@ -708,7 +708,7 @@ quit;
             dbms=csv replace;
         run;
     %end;
-    %else %put ⚠️ Dataset &data does not exist. Skipping export.;
+    %else %put ️ Dataset &data does not exist. Skipping export.;
 %mend;
 
 /* 🚀 Run all exports */
